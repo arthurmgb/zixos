@@ -1,0 +1,18 @@
+*{
+    font-family: 'Nunito', sans-serif;
+}
+.table-row{
+    transition: all ease 0.3s;
+}
+.table-row:hover{
+    box-shadow: 0px 5px 15px -10px #000000;
+}
+.table-row button, .table-row a{
+    cursor: pointer;
+}
+.table-row button:active, .table-row a:active{
+    cursor: pointer;
+}
+.table-row span{
+    cursor: not-allowed !important;
+}
