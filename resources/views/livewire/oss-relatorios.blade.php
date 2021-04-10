@@ -47,7 +47,7 @@
             
             <h5>
             <span class="badge badge-dark m-0 p-2">
-                    <i class="far fa-list-alt mr-1"></i> Listando {{$qtd_os}} O.S. encontradas nessa página
+                    <i class="far fa-list-alt mr-1"></i> Listando {{$qtd_os}} de {{$os_encontradas}} O.S. encontradas
             </span>
             </h5>
             

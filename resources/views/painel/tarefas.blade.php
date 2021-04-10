@@ -29,7 +29,7 @@
             font-size: 18px;
         }
         .task-input{
-            background-color: #F3F4F6;
+            background-color: #F9FAFB;
         }
         .task-input::placeholder{
             letter-spacing: 2px;

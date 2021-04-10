@@ -33,12 +33,17 @@ class OssAll extends Component
         ->latest('id')
         ->paginate(7);
 
+        //ABERTAS
         $oss_abertas = Ordem::where('user_id', auth()->user()->id)
         ->where('fechada', 0)->get();
-
         $qtd_abertas = count($oss_abertas);
 
-        return view('livewire.oss-all', compact('oss', 'qtd_abertas'))
+        //TOTAL
+        $oss_cadastradas = Ordem::where('user_id', auth()->user()->id)->get();
+        $qtd_cad = count($oss_cadastradas);
+
+
+        return view('livewire.oss-all', compact('oss', 'qtd_cad','qtd_abertas'))
                                 ->layout('painel.all');
         
     }

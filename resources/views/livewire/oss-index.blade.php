@@ -13,20 +13,26 @@
                 Nenhum registro encontrado para o dia {{$data_atual->format('d/m/Y')}}.
             </div>
             @else
-            <h5>
+            <div class="d-flex flex-row justify-content-between align-items-center mb-2">
+                <h5 class="mb-0 align-self-end">
+    
+                    @if ($qtd_abertas != 0 and $qtd_abertas != 1)
+                    <span class="badge badge-warning m-0 p-2">
+                        <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordens de Serviço abertas
+                    </span>
+                    @elseif ($qtd_abertas == 1)
+                    <span class="badge badge-primary m-0 p-2">
+                        <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordem de Serviço aberta
+                    </span>
+                    @else
+                    @endif
+                
+                </h5>
+                <a class="btn btn-dark align-self-end" href="{{route('all')}}">
+                    <i class="fas fa-clipboard-list mr-2"></i>Ver todas
+                </a>
+            </div>
 
-                @if ($qtd_abertas != 0 and $qtd_abertas != 1)
-                <span class="badge badge-warning m-0 p-2">
-                    <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordens de Serviço abertas
-                </span>
-                @elseif ($qtd_abertas == 1)
-                <span class="badge badge-primary m-0 p-2">
-                    <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordem de Serviço aberta
-                </span>
-                @else
-                @endif
-            
-            </h5>
                 <table class="table table-striped table-responsive-sm text-center border-top">
                     <thead>
                         <tr>

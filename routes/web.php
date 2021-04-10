@@ -15,7 +15,7 @@ Route::group(['middleware' => 'auth'], function(){
     
 });
 
-Route::get('/optimize', function() {
+/* Route::get('/optimize', function() {
     $exitCode = Artisan::call('optimize:clear');
     return '<h1>Reoptimized class loader</h1>';
 });
@@ -23,4 +23,4 @@ Route::get('/optimize', function() {
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
     return '<h1>Cache facade value cleared</h1>';
-});
+}); */

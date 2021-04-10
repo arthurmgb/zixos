@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'logo' => '<b>Zix</b>OS',
+    'logo' => 'Zix<b>OS</b>',
     'logo_img' => '/storage/painel/zixos-logo-painel.png',
     'logo_img_class' => 'brand-image img-circle',
     'logo_img_xl' => null,
@@ -232,22 +232,20 @@ return [
             'icon'        => 'fab fa-fw fa-buffer',
             'submenu' => [
                 [
-                    'text' => 'Listar O.S.',
+                    'text' => 'Dashboard',
                     'route'  => 'livewire',
-                    'icon' => 'fas fa-fw fa-file-alt',
-                    'label_color' => 'success',
-                ],
-                [
-                    'text' => 'Incluir O.S.',
-                    'route'  => 'oss.create',
-                    'icon' => 'fas fa-fw fa-plus-circle',
+                    'icon' => 'fas fa-fw fa-home',
                 ],
                 [
                     'text' => 'Minhas O.S.',
                     'route'  => 'all',
                     'icon' => 'fas fa-fw fa-clipboard-list',
-                    'label_color' => 'warning',
                     'active' => ['regex:@oss/[0-9]@'],
+                ],
+                [
+                    'text' => 'Incluir O.S.',
+                    'route'  => 'oss.create',
+                    'icon' => 'fas fa-fw fa-plus-circle',
                 ],
                 [
                     'text' => 'Relatórios',
@@ -262,6 +260,18 @@ return [
             'route'  => 'tarefas',
             'icon' => 'fas fa-fw fa-tasks',
 
+        ],
+        [
+            'text' => 'Sintegra',
+            'url'  => 'http://www.sintegra.gov.br',
+            'icon' => 'fas fa-fw fa-sync',
+            'target' => '_blank',
+        ],
+        [
+            'text' => 'NF-e',
+            'url'  => 'https://www.nfe.fazenda.gov.br/portal/principal.aspx',
+            'icon' => 'fas fa-fw fa-file-invoice-dollar',
+            'target' => '_blank',
         ],
         [
             'text' => 'Data e Hora',

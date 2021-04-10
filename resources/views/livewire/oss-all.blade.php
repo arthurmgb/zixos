@@ -10,20 +10,37 @@
                 Nenhum registro encontrado.
             </div>
             @else
-            <h5>
+            <div class="d-flex flex-row align-items-center mb-2">
+                
+                <h5 class="mb-0 align-self-end mr-1">
+    
+                    @if ($qtd_cad)
+                    <span class="badge badge-dark m-0 p-2">
+                        <i class="fas fa-file-alt mr-1"></i> O.S. cadastradas: {{$qtd_cad}}
+                    </span>
+                    @endif
+                
+                </h5>
 
-                @if ($qtd_abertas != 0 and $qtd_abertas != 1)
-                <span class="badge badge-warning m-0 p-2">
-                    <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordens de Serviço abertas
-                </span>
-                @elseif ($qtd_abertas == 1)
-                <span class="badge badge-primary m-0 p-2">
-                    <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordem de Serviço aberta
-                </span>
-                @else
-                @endif
-            
-            </h5>
+                <h5 class="mb-0 align-self-end">
+    
+                    @if ($qtd_abertas != 0 and $qtd_abertas != 1)
+                    <span class="badge badge-warning m-0 p-2">
+                        <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordens de Serviço abertas
+                    </span>
+                    @elseif ($qtd_abertas == 1)
+                    <span class="badge badge-primary m-0 p-2">
+                        <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordem de Serviço aberta
+                    </span>
+                    @else
+                    @endif
+                
+                </h5>
+                <a class="btn btn-primary align-self-end ml-auto" href="{{route('livewire')}}">
+                    <i class="fas fa-clipboard-list mr-2"></i>Dia atual
+                </a>
+            </div>
+
                 <table class="table table-striped table-responsive-sm text-center border-top">
                     <thead>
                         <tr>

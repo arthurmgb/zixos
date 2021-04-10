@@ -38,15 +38,22 @@ class OssRelatorios extends Component
                 
                 $situacao = $this->search['situacao']; 
 
+                //ENCONTRADAS POR PÁGINA
                 $oss = Ordem::where('user_id', auth()->user()->id)
                 ->where('fechada', $situacao)
                 ->whereBetween('created_at', [$inicial, $final])
                 ->latest('id')
                 ->paginate(7); 
-                
                 $qtd_os = count($oss);
 
-                return view('livewire.oss-relatorios', compact('oss', 'qtd_os'))
+                //TOTAL ENCONTRADAS
+                $resultado = Ordem::where('user_id', auth()->user()->id)
+                ->where('fechada', $situacao)
+                ->whereBetween('created_at', [$inicial, $final])
+                ->get();
+                $os_encontradas = count($resultado);
+
+                return view('livewire.oss-relatorios', compact('oss', 'qtd_os', 'os_encontradas'))
                 ->layout('painel.relatorios');
                 
             }else{
@@ -65,15 +72,22 @@ class OssRelatorios extends Component
                 
                 $situacao = $this->search['situacao'];
 
+                //ENCONTRADAS POR PÁGINA
                 $oss = Ordem::where('user_id', auth()->user()->id)
                 ->where('fechada', $situacao)
                 ->whereBetween('created_at', [$inicial, $final])
                 ->latest('id')
                 ->paginate(7); 
-                
                 $qtd_os = count($oss);
 
-                return view('livewire.oss-relatorios', compact('oss', 'qtd_os'))
+                //TOTAL ENCONTRADAS
+                $resultado = Ordem::where('user_id', auth()->user()->id)
+                ->where('fechada', $situacao)
+                ->whereBetween('created_at', [$inicial, $final])
+                ->get();
+                $os_encontradas = count($resultado);
+
+                return view('livewire.oss-relatorios', compact('oss', 'qtd_os', 'os_encontradas'))
                 ->layout('painel.relatorios');
                 
             }
