@@ -9,6 +9,12 @@
             @php  
                 $data_atual = Carbon\Carbon::now()->locale('pt_BR');
             @endphp
+            <div class="d-flex flex-row-reverse mb-2">
+                <a class="btn btn-dark" href="{{route('all')}}">
+                    <i class="fas fa-clipboard-list mr-2"></i>Ver todas
+                </a>
+            </div>
+
             <div class="alert alert-light mb-0" role="alert">
                 Nenhum registro encontrado para o dia {{$data_atual->format('d/m/Y')}}.
             </div>
