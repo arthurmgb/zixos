@@ -76,19 +76,26 @@ class OssAll extends Component
 
     public function toggle(Ordem $os){
         
-        $this->ordem = $os->id;
-        $this->status = $os->fechada;
+        if(is_null($os->saida)){
+            $this->dispatchBrowserEvent('cancel-toggle', ['message' => 'Não é possível fechar uma O.S. sem marcar a saída.']);
+        }
+        else{
 
-        $os = Ordem::find($this->ordem);
+            $this->ordem = $os->id;
+            $this->status = $os->fechada;
+    
+            $os = Ordem::find($this->ordem);
+    
+            if($this->status == 0){
+                $os->update([
+                    'fechada'=> '1',
+                ]);
+            }else{
+                $os->update([
+                    'fechada'=> '0',
+                ]);
+            }
 
-        if($this->status == 0){
-            $os->update([
-                'fechada'=> '1',
-            ]);
-        }else{
-            $os->update([
-                'fechada'=> '0',
-            ]);
         }
 
     }

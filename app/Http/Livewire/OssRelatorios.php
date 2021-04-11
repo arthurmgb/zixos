@@ -128,20 +128,26 @@ class OssRelatorios extends Component
 
     public function toggle(Ordem $os){
         
-        $this->ordem = $os->id;
+        if(is_null($os->saida)){
+            $this->dispatchBrowserEvent('cancel-toggle', ['message' => 'Não é possível fechar uma O.S. sem marcar a saída.']);
+        }
+        else{
 
-        $this->status = $os->fechada;
+            $this->ordem = $os->id;
+            $this->status = $os->fechada;
+    
+            $os = Ordem::find($this->ordem);
+    
+            if($this->status == 0){
+                $os->update([
+                    'fechada'=> '1',
+                ]);
+            }else{
+                $os->update([
+                    'fechada'=> '0',
+                ]);
+            }
 
-        $os = Ordem::find($this->ordem);
-
-        if($this->status == 0){
-            $os->update([
-                'fechada'=> '1',
-            ]);
-        }else{
-            $os->update([
-                'fechada'=> '0',
-            ]);
         }
 
     }

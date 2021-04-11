@@ -50,6 +50,10 @@
         toastr.success(event.detail.message);
     })
 
+    window.addEventListener('cancel-toggle', event => {
+        toastr.error(event.detail.message);
+    })
+
 </script>
 
 <script>
