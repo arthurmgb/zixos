@@ -262,15 +262,33 @@ return [
 
         ],
         [
-            'text' => 'Sintegra',
-            'url'  => 'http://www.sintegra.gov.br',
-            'icon' => 'fas fa-fw fa-sync',
+            'text' => 'Webmail',
+            'url'  => 'http://webmail.zixinformatica.com',
+            'icon' => 'fas fa-fw fa-envelope',
             'target' => '_blank',
         ],
         [
-            'text' => 'NF-e',
+            'text' => 'MantisBT',
+            'url'  => 'http://192.168.254.91/mantis/my_view_page.php',
+            'icon' => 'fas fa-fw fa-bug',
+            'target' => '_blank',
+        ],
+        [
+            'text' => 'Portal da NF-e',
             'url'  => 'https://www.nfe.fazenda.gov.br/portal/principal.aspx',
             'icon' => 'fas fa-fw fa-file-invoice-dollar',
+            'target' => '_blank',
+        ],
+        [
+            'text' => 'Consulta NFC-e',
+            'url'  => 'http://nfce.fazenda.mg.gov.br/portalnfce/sistema/consultaarg.xhtml',
+            'icon' => 'fas fa-fw fa-receipt',
+            'target' => '_blank',
+        ],
+        [
+            'text' => 'Sintegra',
+            'url'  => 'http://www.sintegra.gov.br',
+            'icon' => 'fas fa-fw fa-sync',
             'target' => '_blank',
         ],
         [

@@ -168,7 +168,7 @@
                                     <p style="color: #DC3545" class="h5 font-weight-bold mb-0">
 
                                         @if (is_null($item_ordem['saida']))
-                                        Não marcado.
+                                        Não marcado
                                         @else
                                         {{ $saida = Carbon\Carbon::parse($item_ordem['saida'])->format('H:i') }}
                                         @endif
