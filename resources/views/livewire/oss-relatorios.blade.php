@@ -68,11 +68,11 @@
                         
                         @if ($os->fechada == 0)
                                 <tr class="table-row">
-                                    <td class="font-weight-bold text-primary">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
-                                    <td class="font-weight-bold text-success">{{date('H:i', strtotime($os->entrada))}}</td>
-                                    <td style="max-width: 50px;" class="text-truncate">{{$os->empresa}}</td>
-                                    <td style="max-width: 50px;" class="text-truncate">{{$os->solicitante}}</td>
-                                    <td style="max-width: 50px;" class="text-truncate">{{$os->solicitacao}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-primary pointer">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer">{{date('H:i', strtotime($os->entrada))}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitacao}}</td>
                                     <td class="font-weight-bold text-danger">@if (is_null($os->saida))  <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button> @else {{date('H:i', strtotime($os->saida))}} @endif</td>
                                     <td style="user-select: none;">
 
@@ -92,11 +92,11 @@
                                 </tr>
                         @else
                             <tr class="table-row">
-                                <td class="font-weight-bold text-primary">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
-                                <td class="font-weight-bold text-success">{{date('H:i', strtotime($os->entrada))}}</td>
-                                <td style="max-width: 50px;" class="text-truncate">{{$os->empresa}}</td>
-                                <td style="max-width: 50px;" class="text-truncate">{{$os->solicitante}}</td>
-                                <td style="max-width: 50px;" class="text-truncate">{{$os->solicitacao}}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-primary pointer">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer">{{date('H:i', strtotime($os->entrada))}}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitacao}}</td>
                                 <td class="font-weight-bold text-danger">@if (is_null($os->saida)) <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button> @else {{date('H:i', strtotime($os->saida))}} @endif</td>
                                 <td style="user-select: none;">
 

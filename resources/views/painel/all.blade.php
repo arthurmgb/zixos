@@ -20,6 +20,12 @@
         .font-grow{
             font-size: 18px;
         }
+        .evento-pointer{
+            pointer-events: none;
+        }
+        .pointer{
+            cursor: pointer;
+        }
     </style>
 @stop
 
