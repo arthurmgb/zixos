@@ -262,18 +262,6 @@ return [
 
         ],
         [
-            'text' => 'Webmail',
-            'url'  => 'http://webmail.zixinformatica.com',
-            'icon' => 'fas fa-fw fa-envelope',
-            'target' => '_blank',
-        ],
-        [
-            'text' => 'MantisBT',
-            'url'  => 'http://192.168.254.91/mantis/my_view_page.php',
-            'icon' => 'fas fa-fw fa-bug',
-            'target' => '_blank',
-        ],
-        [
             'text' => 'Portal da NF-e',
             'url'  => 'https://www.nfe.fazenda.gov.br/portal/principal.aspx',
             'icon' => 'fas fa-fw fa-file-invoice-dollar',
@@ -295,6 +283,31 @@ return [
             'text' => 'Data e Hora',
             'route'  => 'datetime',
             'icon' => 'far fa-fw fa-clock',
+        ],
+        ['header' => 'SOCIAL'],
+        [
+            'text' => 'Skype',
+            'url'  => 'https://go.skype.com/sfw',
+            'icon' => 'fab fa-fw fa-skype',
+            'target' => '_blank',
+        ],
+        [
+            'text' => 'Gmail',
+            'url'  => 'https://www.google.com/gmail',
+            'icon' => 'fab fa-fw fa-google',
+            'target' => '_blank',
+        ],
+        [
+            'text' => 'Webmail',
+            'url'  => 'http://webmail.zixinformatica.com',
+            'icon' => 'fas fa-fw fa-envelope',
+            'target' => '_blank',
+        ],
+        [
+            'text' => 'MantisBT',
+            'url'  => 'http://192.168.254.91/mantis/my_view_page.php',
+            'icon' => 'fas fa-fw fa-bug',
+            'target' => '_blank',
         ],
         [
             'text' => 'Minha Conta',
