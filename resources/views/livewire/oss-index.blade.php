@@ -222,16 +222,23 @@
                                 <div class="col-6">
                                     <i class="fas fa-user-shield mr-1"></i>
                                     <label class="h5">ID TeamViewer</label>
-                                    <p class="h5 mb-0">
+
+                                    <p id="idtv" class="h5 mb-0">
                                         {{$item_ordem['idtv']}}
                                     </p>
+                                    
+                                    <button data-clipboard-target="#idtv" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
+
                                 </div>
                                 <div class="col-6">
                                     <i class="fas fa-user-lock mr-1"></i>
                                     <label class="h5">Senha TeamViewer</label>
-                                    <p class="h5 mb-0">
+
+                                    <p id="senhatv" class="h5 mb-0">
                                         {{$item_ordem['senhatv']}}
                                     </p>
+
+                                    <button data-clipboard-target="#senhatv" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
                                 </div>
                             </div>
                             <hr>
@@ -239,9 +246,12 @@
                                 <div class="col-12">
                                     <i class="fas fa-exclamation-triangle mr-1"></i>
                                     <label class="h5">Solicitação/Problema</label>
-                                    <p class="h5 mb-0">
+
+                                    <p id="solicitacao" class="h5 mb-0">
                                         {{$item_ordem['solicitacao']}}
                                     </p>
+
+                                    <button data-clipboard-target="#solicitacao" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
                                 </div>
                             </div>
                             <hr>
@@ -249,9 +259,12 @@
                                 <div class="col-12">
                                     <i class="fas fa-tools mr-1"></i>
                                     <label class="h5">Serviço executado</label>
-                                    <p class="h5 mb-0">
+
+                                    <p id="solucao" class="h5 mb-0">
                                         {{$item_ordem['solucao']}}
                                     </p>
+
+                                    <button data-clipboard-target="#solucao" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
                                 </div>
                             </div>
 

@@ -20,6 +20,10 @@
         .font-grow{
             font-size: 18px;
         }
+        .font-grow2{
+            top: 5px;
+            font-size: 18px;
+        }
         .evento-pointer{
             pointer-events: none;
         }
@@ -32,6 +36,11 @@
 @section('js')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<!-- Copiar -->
+<script src="{{asset('js/clipboard.min.js')}}"></script>
+<script src="{{asset('js/copy.js')}}"></script>
+<!-- /Copiar -->
 
 <script>
     $(document).ready(function(){
