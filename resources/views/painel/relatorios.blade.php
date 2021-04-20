@@ -46,6 +46,7 @@
     $(document).ready(function(){
         toastr.options = {
             toastClass: 'font-grow',
+            "progressBar": true,
         }
     });
 </script>

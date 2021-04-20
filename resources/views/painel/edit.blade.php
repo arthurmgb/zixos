@@ -61,11 +61,13 @@
                 <div class="form-group col-md-6">
                     <i class="fas fa-user-shield ml-2 mr-1"></i>
                     {!! Form::label('idtv', 'ID TeamViewer') !!}
+                    <a data-clipboard-target="#idtv" class="copia btn text-primary float-right p-0"><i class="fas fa-clipboard-list mr-1"></i>Copiar</a>
                     {!! Form::text('idtv', null, ['class' => 'form-control', 'autocomplete' => 'off']) !!}
                 </div>
                 <div class="form-group col-md-6">
                     <i class="fas fa-user-lock ml-2 mr-1"></i>
                     {!! Form::label('senhatv', 'Senha TeamViewer') !!}
+                    <a data-clipboard-target="#senhatv" class="copia btn text-primary float-right p-0"><i class="fas fa-clipboard-list mr-1"></i>Copiar</a>
                     {!! Form::text('senhatv', null, ['class' => 'form-control', 'autocomplete' => 'off']) !!}
                 </div>
             </div>
@@ -103,11 +105,19 @@
         .font-grow{
             font-size: 18px;
         }
+        .font-grow2{
+            top: 5px;
+            font-size: 18px;
+        }
     </style>
 @stop
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!-- Copiar -->
+<script src="{{asset('js/clipboard.min.js')}}"></script>
+<script src="{{asset('js/copy.js')}}"></script>
+<!-- /Copiar -->
 <script>
 
     @if(Session::has('message'))

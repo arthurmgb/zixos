@@ -8,7 +8,10 @@
         $dia_da_semana = $data_atual->isoFormat('dddd');
         $dia_da_semana = ucwords($dia_da_semana);
     @endphp
-    <h1 class="ml-2">Ordens de Serviço - {{$data_atual->isoFormat('LL')}} ({{$dia_da_semana}})</h1>
+    <div class="d-flex flex-row">
+        <h1 class="ml-2">Ordens de Serviço - {{$data_atual->isoFormat('LL')}} ({{$dia_da_semana}})</h1>
+        <a title="Ver data e hora" class="btn btn-link" href="{{route('datetime')}}"><i class="fas fa-external-link-alt"></i></a>
+    </div>
 @stop
 
 @section('content')
@@ -51,6 +54,7 @@
     $(document).ready(function(){
         toastr.options = {
             toastClass: 'font-grow',
+            "progressBar": true,
         }
     });
 </script>

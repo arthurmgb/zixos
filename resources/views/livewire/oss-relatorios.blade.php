@@ -63,6 +63,7 @@
                             <th style="user-select: none;">Ações</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
                     @foreach ($oss as $os)
                         
@@ -73,16 +74,29 @@
                                     <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
                                     <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>
                                     <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitacao}}</td>
-                                    <td class="font-weight-bold text-danger">@if (is_null($os->saida))  <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button> @else {{date('H:i', strtotime($os->saida))}} @endif</td>
+
+                                    <td class="font-weight-bold text-danger">
+
+                                        @if (is_null($os->saida))  
+
+                                        <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button>
+
+                                        @else 
+
+                                        {{date('H:i', strtotime($os->saida))}} 
+
+                                        @endif
+                                    </td>
+
                                     <td style="user-select: none;">
 
-                                        <button wire:click.prevent="toggle({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-secondary my-1"><i class="fas fa-times-circle mr-1"></i>Fechar O.S.</button>
-
-                                        <a class="btn btn-sm btn-success my-1" href="{{route('oss.edit', $os)}}"><i class="fas fa-edit mr-1"></i>Editar</a>
-
-                                        <button wire:click.prevent="mostra_os({{$os}})" wire:loading.attr="disabled" title="Detalhar O.S." class="btn btn-sm btn-primary my-1">
-                                            <i class="fas fa-folder-open"></i>
+                                        <button wire:click.prevent="mostra_os({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-primary my-1">
+                                            <i class="fas fa-folder-open mr-1"></i>Detalhes
                                         </button>
+
+                                        <a class="btn btn-sm btn-warning my-1" href="{{route('oss.edit', $os)}}"><i class="fas fa-edit mr-1"></i>Editar</a>
+
+                                        <button wire:click.prevent="toggle({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-secondary my-1"><i class="fas fa-times-circle mr-1"></i>Fechar O.S.</button>
 
                                         <button wire:click.prevent="remove_os({{$os->id}})" wire:loading.attr="disabled" title="Deletar O.S." class="btn btn-sm btn-danger my-1">
                                             <i class="fas fa-trash-alt"></i>
@@ -100,17 +114,17 @@
                                 <td class="font-weight-bold text-danger">@if (is_null($os->saida)) <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button> @else {{date('H:i', strtotime($os->saida))}} @endif</td>
                                 <td style="user-select: none;">
 
-                                    <span title="✔️">
-                                    <a aria-disabled="true" class="btn btn-sm btn-secondary my-1 disabled"><i class="fas fa-check-circle mr-1"></i></i>Fechada</a>
-                                    </span>
+                                    <button wire:click.prevent="mostra_os({{$os->id}})" wire:loading.attr="disabled" title="Detalhar O.S." class="btn btn-sm btn-primary my-1">
+                                        <i class="fas fa-folder-open mr-1"></i>Detalhes
+                                    </button>
 
                                     <button wire:click.prevent="toggle({{$os}})" wire:loading.attr="disabled" title="Reabrir O.S." class="btn btn-sm btn-success my-1">
                                         <i class="fas fa-undo-alt mr-1"></i>Reabrir
                                     </button>
 
-                                    <button wire:click.prevent="mostra_os({{$os->id}})" wire:loading.attr="disabled" title="Detalhar O.S." class="btn btn-sm btn-primary my-1">
-                                        <i class="fas fa-folder-open"></i>
-                                    </button>
+                                    <span title="✔️">
+                                        <a aria-disabled="true" class="btn btn-sm btn-secondary my-1 disabled"><i class="fas fa-check-circle mr-1"></i></i>Fechada</a>
+                                    </span>
 
                                     <button wire:click.prevent="remove_os({{$os->id}})" wire:loading.attr="disabled" title="Deletar O.S." class="btn btn-sm btn-danger my-1">
                                         <i class="fas fa-trash-alt"></i>
@@ -122,6 +136,7 @@
                         
                     @endforeach
                     </tbody>
+                    
                 </table>
             @endif
 
