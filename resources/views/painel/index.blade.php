@@ -10,7 +10,7 @@
     @endphp
     <div class="d-flex flex-row">
         <h1 class="ml-2">Ordens de Serviço - {{$data_atual->isoFormat('LL')}} ({{$dia_da_semana}})</h1>
-        <a title="Ver data e hora" class="btn btn-link" href="{{route('datetime')}}"><i class="fas fa-external-link-alt"></i></a>
+        <a title="Ver data e hora" class="btn btn-link pl-1 pt-1" href="{{route('datetime')}}"><i class="fas fa-external-link-alt"></i></a>
     </div>
 @stop
 

@@ -13,7 +13,7 @@ class TarefasIndex extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $tarefa, $tarefa_id;
+    public $tarefa, $tarefa_id, $situacao=[];
 
     public $acao = "store";
 
@@ -23,11 +23,61 @@ class TarefasIndex extends Component
 
     public function render()
     {
-        $tarefas = Tarefa::where('user_id', auth()->user()->id)
-                            ->latest('id')
-                            ->paginate(7);
 
-        return view('livewire.tarefas-index', compact('tarefas'));
+        $todas = Tarefa::where('user_id', auth()->user()->id)->count();
+        $pendentes = Tarefa::where('user_id', auth()->user()->id)->where('checked',0)->count();
+        $concluidas = Tarefa::where('user_id', auth()->user()->id)->where('checked',1)->count();
+        
+        if($this->situacao){
+            
+            if($this->situacao == 0){
+
+                $tarefas = Tarefa::where('user_id', auth()->user()->id)
+                ->latest('id')
+                ->paginate(7);
+
+                return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas'));
+
+            }
+            elseif($this->situacao == 1){
+
+                $tarefas = Tarefa::where('user_id', auth()->user()->id)
+                ->where('checked', 0)
+                ->latest('id')
+                ->paginate(7);
+        
+                return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas'));
+
+            }
+            elseif($this->situacao == 2){
+                
+                $tarefas = Tarefa::where('user_id', auth()->user()->id)
+                ->where('checked', 1)
+                ->latest('id')
+                ->paginate(7);
+        
+                return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas'));
+
+            }
+
+        }
+
+        else{
+
+            $tarefas = Tarefa::where('user_id', auth()->user()->id)
+            ->latest('id')
+            ->paginate(7);
+    
+            return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas'));
+
+        }
+
+    }
+
+    public function filtrar($id){
+
+        $this->situacao = $id;
+        $this->resetPage();
 
     }
 

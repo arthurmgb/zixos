@@ -3,7 +3,14 @@
 @section('title', 'Incluir O.S.')
 
 @section('content_header')
-    <h1 class="ml-2">Incluir nova Ordem de Serviço</h1>
+
+    <div class="d-flex flex-row justify-content-between">
+        <h1 class="ml-2">Incluir nova Ordem de Serviço</h1>
+        <a class="btn btn-primary" href="{{url()->previous()}}">
+            <i class="fas fa-chevron-left mr-2"></i>Voltar
+        </a>
+    </div>
+
 @stop
 
 @section('content')

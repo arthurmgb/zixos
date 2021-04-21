@@ -9,15 +9,19 @@
             @php  
                 $data_atual = Carbon\Carbon::now()->locale('pt_BR');
             @endphp
-            <div class="d-flex flex-row-reverse mb-2">
-                <a class="btn btn-dark" href="{{route('all')}}">
-                    <i class="fas fa-clipboard-list mr-2"></i>Ver todas
-                </a>
+            <div class="row">
+                <div class="col-10 pr-1">
+                    <div class="alert alert-light mb-0" role="alert">
+                        Nenhum registro encontrado para o dia {{$data_atual->format('d/m/Y')}}.
+                    </div>
+                </div>
+                <div class="col-2 pl-1">
+                    <a style="padding-top: 12px; padding-bottom: 12px;" class="btn btn-outline-dark btn-block" href="{{route('all')}}">
+                        <i class="fas fa-clipboard-list mr-2"></i>Ver todas
+                    </a>
+                </div>
             </div>
 
-            <div class="alert alert-light mb-0" role="alert">
-                Nenhum registro encontrado para o dia {{$data_atual->format('d/m/Y')}}.
-            </div>
             @else
             <div class="d-flex flex-row justify-content-between align-items-center mb-2">
                 <h5 class="mb-0 align-self-end">

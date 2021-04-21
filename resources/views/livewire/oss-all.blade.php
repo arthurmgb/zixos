@@ -44,6 +44,7 @@
                 <table class="table table-striped table-responsive-sm text-center border-top">
                     <thead>
                         <tr>
+                            <th>Inclusão</th>
                             <th>Entrada</th>
                             <th>Empresa</th>
                             <th>Solicitante</th>
@@ -57,6 +58,7 @@
                             
                             @if ($os->fechada == 0)
                                     <tr class="table-row">
+                                        <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-primary pointer">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
                                         <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer">{{date('H:i', strtotime($os->entrada))}}</td>
                                         <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
                                         <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>
@@ -93,6 +95,7 @@
                                     </tr>
                             @else
                                 <tr class="table-row">
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-primary pointer">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
                                     <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer">{{date('H:i', strtotime($os->entrada))}}</td>
                                     <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
                                     <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>

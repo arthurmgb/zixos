@@ -20,6 +20,29 @@
             </div>
         </div>
         <div class="card-body py-2">
+
+            <div class="menu">
+
+                <button wire:click="filtrar({{0}})" wire:target="filtrar({{0}})" wire:loading.attr="disabled" class="btn btn-link">
+                    <i class="fas fa-tasks text-dark mr-2"></i>Todas ({{$todas}})
+                </button>
+                
+                <button wire:click="filtrar({{1}})" wire:loading.attr="disabled" wire:target="filtrar({{1}})" class="btn btn-link">
+                    <i class="fas fa-thumbtack text-danger mr-2"></i>Pendentes ({{$pendentes}})
+                </button>
+                
+                <button wire:click="filtrar({{2}})" wire:target="filtrar({{2}})" wire:loading.attr="disabled" class="btn btn-link">
+                    <i class="fas fa-check-circle text-success mr-2"></i>Concluídas ({{$concluidas}})
+                </button>
+
+                <span class="btn float-right text-muted" wire:loading wire:target="filtrar">
+                    <i class="text-primary fas fa-circle-notch fa-spin mr-1"></i> Carregando...
+                </span>
+
+            </div>
+
+            <hr class="my-2">
+
             @if ($tarefas->count())
 
             <table class="table">
@@ -58,9 +81,11 @@
 
               @else
               <div class="d-flex flex-row justify-content-center align-items-center">
-                  <button style="width: 45px; height: 45px; border-radius: 30px;" wire:click="gotoPage(1)" wire:loading.attr="disabled" class="btn btn-primary mt-4">
+
+                  <button style="width: 45px; height: 45px; border-radius: 30px" wire:click="gotoPage(1)" wire:loading.attr="disabled" class="btn btn-primary mt-4">
                     <i class="fas fa-sync-alt"></i>
                   </button>
+
               </div>
 
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgba(241, 242, 243, 0); display: block; shape-rendering: auto;" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
