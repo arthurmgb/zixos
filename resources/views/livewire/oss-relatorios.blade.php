@@ -24,6 +24,7 @@
                         <select wire:model.defer="search.situacao" class="form-control">
                             <option value="1" selected>Fechadas</option>
                             <option value="0">Abertas</option>
+                            <option value="2">Todas</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
@@ -69,13 +70,24 @@
                         
                         @if ($os->fechada == 0)
                                 <tr class="table-row">
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-primary pointer">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer">{{date('H:i', strtotime($os->entrada))}}</td>
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitacao}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-primary pointer align-middle">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer align-middle">{{date('H:i', strtotime($os->entrada))}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">{{$os->empresa}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">
+                                        @if (is_null($os->solicitante))
+                                        <i class="fas fa-user-slash"></i>
+                                        @else
+                                        {{$os->solicitante}}
+                                        @endif 
+                                    </td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">
+                                        @if (is_null($os->solucao))
+                                        <i class="fas fa-tools text-primary mr-1"></i>
+                                        @endif
+                                        {{$os->solicitacao}}
+                                    </td>
 
-                                    <td class="font-weight-bold text-danger">
+                                    <td class="font-weight-bold text-danger align-middle">
 
                                         @if (is_null($os->saida))  
 
@@ -106,12 +118,18 @@
                                 </tr>
                         @else
                             <tr class="table-row">
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-primary pointer">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer">{{date('H:i', strtotime($os->entrada))}}</td>
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitacao}}</td>
-                                <td class="font-weight-bold text-danger">@if (is_null($os->saida)) <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button> @else {{date('H:i', strtotime($os->saida))}} @endif</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-primary pointer align-middle">{{ $data = Carbon\Carbon::parse($os->created_at)->format('d/m/y') }}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer align-middle">{{date('H:i', strtotime($os->entrada))}}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">{{$os->empresa}}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">
+                                    @if (is_null($os->solicitante))
+                                        <i class="fas fa-user-slash"></i>
+                                    @else
+                                        {{$os->solicitante}}
+                                    @endif 
+                                </td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">{{$os->solicitacao}}</td>
+                                <td class="font-weight-bold text-danger align-middle">@if (is_null($os->saida)) <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button> @else {{date('H:i', strtotime($os->saida))}} @endif</td>
                                 <td style="user-select: none;">
 
                                     <button wire:click.prevent="mostra_os({{$os->id}})" wire:loading.attr="disabled" title="Detalhar O.S." class="btn btn-sm btn-primary my-1">
@@ -181,14 +199,14 @@
                     <div class="card mb-0">
                         <div class="card-body">
 
-                            @php
+                           @php
 
-                                $getOrdem = App\Models\Ordem::where('id', $idOrdem)->get();
-                                $ordem = $getOrdem->toArray();
-                                
-                            @endphp
+                               $getOrdem = App\Models\Ordem::where('id', $idOrdem)->get();
+                               $ordem = $getOrdem->toArray();
+                               
+                           @endphp
 
-                            @foreach ($ordem as $item_ordem)
+                           @foreach ($ordem as $item_ordem)
 
                             <div class="row text-center">
                                 <div class="col-4">
@@ -202,7 +220,7 @@
                                     <i class="far fa-clock mr-1"></i>
                                     <label class="h5">Horário de entrada</label>
                                     <p style="color: #28A745" class="h5 font-weight-bold mb-0">
-                                        {{ $entrada = Carbon\Carbon::parse($item_ordem['entrada'])->format('H:i') }}
+                                       {{ $entrada = Carbon\Carbon::parse($item_ordem['entrada'])->format('H:i') }}
                                     </p>
                                 </div>
                                 <div class="col-4">
@@ -231,9 +249,17 @@
                                 <div class="col-4">
                                     <i class="fas fa-user-tie mr-1"></i>
                                     <label class="h5">Solicitante</label>
+
+                                    @if (is_null($item_ordem['solicitante']))
+                                    <p style="color: #DC3545" class="h5 mb-0 font-weight-bold">
+                                        Não informado
+                                    </p>
+                                    @else
                                     <p class="h5 mb-0">
                                         {{$item_ordem['solicitante']}}
                                     </p>
+                                    @endif
+                        
                                 </div>
                                 <div class="col-4">
                                     <i class="fas fa-info-circle mr-1"></i>
@@ -253,22 +279,36 @@
                                     <i class="fas fa-user-shield mr-1"></i>
                                     <label class="h5">ID TeamViewer</label>
 
+                                    @if (is_null($item_ordem['idtv']))
+                                    <p style="color: #DC3545" class="h5 mb-0 font-weight-bold">
+                                        Não informado
+                                    </p>
+                                    @else
+
                                     <p id="idtv" class="h5 mb-0">
                                         {{$item_ordem['idtv']}}
                                     </p>
                                     
                                     <button data-clipboard-target="#idtv" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
-
+                                    @endif
+                                
                                 </div>
                                 <div class="col-6">
                                     <i class="fas fa-user-lock mr-1"></i>
                                     <label class="h5">Senha TeamViewer</label>
 
+                                    @if (is_null($item_ordem['senhatv']))
+                                    <p style="color: #DC3545" class="h5 mb-0 font-weight-bold">
+                                        Não informado
+                                    </p>
+                                    @else
                                     <p id="senhatv" class="h5 mb-0">
                                         {{$item_ordem['senhatv']}}
                                     </p>
 
                                     <button data-clipboard-target="#senhatv" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
+                                    @endif
+                                    
                                 </div>
                             </div>
                             <hr>
@@ -290,11 +330,19 @@
                                     <i class="fas fa-tools mr-1"></i>
                                     <label class="h5">Serviço executado</label>
 
+                                    @if (is_null($item_ordem['solucao']))
+                                    <p style="color: #DC3545" class="h5 mb-0 font-weight-bold">
+                                        Não informado
+                                    </p>
+                                    <small style="color: #DC3545">Preenchimento obrigatório para fechar Ordem de Serviço.</small>
+                                    @else
                                     <p id="solucao" class="h5 mb-0">
                                         {{$item_ordem['solucao']}}
                                     </p>
 
                                     <button data-clipboard-target="#solucao" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
+                                    @endif
+                                    
                                 </div>
                             </div>
 

@@ -45,8 +45,10 @@ class TarefasIndex extends Component
                 ->where('checked', 0)
                 ->latest('id')
                 ->paginate(7);
-        
-                return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas'));
+
+                $focused = 1;
+
+                return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas', 'focused'));
 
             }
             elseif($this->situacao == 2){
@@ -55,8 +57,10 @@ class TarefasIndex extends Component
                 ->where('checked', 1)
                 ->latest('id')
                 ->paginate(7);
+
+                $focused = 2;
         
-                return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas'));
+                return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas', 'focused'));
 
             }
 
@@ -67,8 +71,10 @@ class TarefasIndex extends Component
             $tarefas = Tarefa::where('user_id', auth()->user()->id)
             ->latest('id')
             ->paginate(7);
+
+            $focused = 0;
     
-            return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas'));
+            return view('livewire.tarefas-index', compact('tarefas', 'todas', 'pendentes', 'concluidas', 'focused'));
 
         }
 

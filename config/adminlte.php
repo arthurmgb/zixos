@@ -292,9 +292,9 @@ return [
             'target' => '_blank',
         ],
         [
-            'text' => 'Gmail',
-            'url'  => 'https://www.google.com/gmail',
-            'icon' => 'fab fa-fw fa-google',
+            'text' => 'WhatsApp Web',
+            'url'  => 'https://web.whatsapp.com',
+            'icon' => 'fab fa-fw fa-whatsapp',
             'target' => '_blank',
         ],
         [
@@ -303,6 +303,19 @@ return [
             'icon' => 'fas fa-fw fa-envelope',
             'target' => '_blank',
         ],
+        [
+            'text' => 'Gmail',
+            'url'  => 'https://mail.google.com',
+            'icon' => 'fab fa-fw fa-google',
+            'target' => '_blank',
+        ],
+        [
+            'text' => 'Google Drive',
+            'url'  => 'https://drive.google.com',
+            'icon' => 'fab fa-fw fa-google-drive',
+            'target' => '_blank',
+        ],
+        
         [
             'text' => 'MantisBT',
             'url'  => 'http://192.168.254.91/mantis/my_view_page.php',

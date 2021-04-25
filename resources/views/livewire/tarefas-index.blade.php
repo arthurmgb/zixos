@@ -23,15 +23,15 @@
 
             <div class="menu">
 
-                <button wire:click="filtrar({{0}})" wire:target="filtrar({{0}})" wire:loading.attr="disabled" class="btn btn-link">
+                <button wire:click="filtrar({{0}})" wire:target="filtrar({{0}})" wire:loading.attr="disabled" class="btn btn-link  @if ($focused == 0)focused @endif">
                     <i class="fas fa-tasks text-dark mr-2"></i>Todas ({{$todas}})
                 </button>
                 
-                <button wire:click="filtrar({{1}})" wire:loading.attr="disabled" wire:target="filtrar({{1}})" class="btn btn-link">
+                <button wire:click="filtrar({{1}})" wire:loading.attr="disabled" wire:target="filtrar({{1}})" class="btn btn-link @if ($focused == 1)focused @endif">
                     <i class="fas fa-thumbtack text-danger mr-2"></i>Pendentes ({{$pendentes}})
                 </button>
                 
-                <button wire:click="filtrar({{2}})" wire:target="filtrar({{2}})" wire:loading.attr="disabled" class="btn btn-link">
+                <button wire:click="filtrar({{2}})" wire:target="filtrar({{2}})" wire:loading.attr="disabled" class="btn btn-link @if ($focused == 2)focused @endif">
                     <i class="fas fa-check-circle text-success mr-2"></i>Concluídas ({{$concluidas}})
                 </button>
 

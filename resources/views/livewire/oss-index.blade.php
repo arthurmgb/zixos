@@ -1,8 +1,13 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <a accesskey="s" data-toggle="tooltip" data-placement="top" title="Alt + S" class="btn btn-success btn-lg float-right mb-2" href="{{route('oss.create')}}"><i class="fas fa-plus-circle mr-2"></i>Incluir O.S.</a>
+
+            <a accesskey="s" data-tooltip="Alt + S" data-flow="top" class="btn btn-success btn-lg float-right mb-2" href="{{route('oss.create')}}">
+                <i class="fas fa-plus-circle mr-2"></i>Incluir O.S.
+            </a>
+
             <input style="letter-spacing: 1px;" wire:model="search" autocomplete="off" class="form-control" placeholder="Pesquisar por empresa...">
+
         </div>
         <div class="card-body">
             @if ($oss->count() == 0)
@@ -28,11 +33,11 @@
     
                     @if ($qtd_abertas != 0 and $qtd_abertas != 1)
                     <span class="badge badge-warning m-0 p-2">
-                        <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordens de Serviço abertas
+                        <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordens de Serviço abertas hoje
                     </span>
                     @elseif ($qtd_abertas == 1)
                     <span class="badge badge-primary m-0 p-2">
-                        <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordem de Serviço aberta
+                        <i class="fas fa-bell mr-1"></i> {{$qtd_abertas}} Ordem de Serviço aberta hoje
                     </span>
                     @else
                     @endif
@@ -59,12 +64,23 @@
                         
                         @if ($os->fechada == 0)
                                 <tr class="table-row">
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer">{{date('H:i', strtotime($os->entrada))}}</td>
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>
-                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitacao}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer align-middle">{{date('H:i', strtotime($os->entrada))}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">{{$os->empresa}}</td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">
+                                        @if (is_null($os->solicitante))
+                                        <i class="fas fa-user-slash"></i>
+                                        @else
+                                        {{$os->solicitante}}
+                                        @endif          
+                                    </td>
+                                    <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">
+                                        @if (is_null($os->solucao))
+                                        <i class="fas fa-tools text-primary mr-1"></i>
+                                        @endif
+                                        {{$os->solicitacao}}
+                                    </td>
 
-                                    <td class="font-weight-bold text-danger">
+                                    <td class="font-weight-bold text-danger align-middle">
 
                                         @if (is_null($os->saida))  
 
@@ -95,11 +111,17 @@
                                 </tr>
                         @else
                             <tr class="table-row">
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer">{{date('H:i', strtotime($os->entrada))}}</td>
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->empresa}}</td>
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitante}}</td>
-                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer">{{$os->solicitacao}}</td>
-                                <td class="font-weight-bold text-danger">@if (is_null($os->saida)) <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button> @else {{date('H:i', strtotime($os->saida))}} @endif</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" class="font-weight-bold text-success pointer align-middle">{{date('H:i', strtotime($os->entrada))}}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">{{$os->empresa}}</td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">
+                                    @if (is_null($os->solicitante))
+                                        <i class="fas fa-user-slash"></i>
+                                    @else
+                                        {{$os->solicitante}}
+                                    @endif  
+                                </td>
+                                <td wire:click.prevent="mostra_os({{$os}})" wire:loading.class="evento-pointer" style="max-width: 50px;" class="text-truncate pointer align-middle">{{$os->solicitacao}}</td>
+                                <td class="font-weight-bold text-danger align-middle">@if (is_null($os->saida)) <button wire:click.prevent="marca_saida({{$os}})" wire:loading.attr="disabled" class="btn btn-sm btn-danger"><i class="fas fa-clock"></i></button> @else {{date('H:i', strtotime($os->saida))}} @endif</td>
                                 <td style="user-select: none;">
 
                                     <button wire:click.prevent="mostra_os({{$os->id}})" wire:loading.attr="disabled" title="Detalhar O.S." class="btn btn-sm btn-primary my-1">
@@ -205,9 +227,17 @@
                                 <div class="col-4">
                                     <i class="fas fa-user-tie mr-1"></i>
                                     <label class="h5">Solicitante</label>
+
+                                    @if (is_null($item_ordem['solicitante']))
+                                    <p style="color: #DC3545" class="h5 mb-0 font-weight-bold">
+                                        Não informado
+                                    </p>
+                                    @else
                                     <p class="h5 mb-0">
                                         {{$item_ordem['solicitante']}}
                                     </p>
+                                    @endif
+                        
                                 </div>
                                 <div class="col-4">
                                     <i class="fas fa-info-circle mr-1"></i>
@@ -227,22 +257,36 @@
                                     <i class="fas fa-user-shield mr-1"></i>
                                     <label class="h5">ID TeamViewer</label>
 
+                                    @if (is_null($item_ordem['idtv']))
+                                    <p style="color: #DC3545" class="h5 mb-0 font-weight-bold">
+                                        Não informado
+                                    </p>
+                                    @else
+
                                     <p id="idtv" class="h5 mb-0">
                                         {{$item_ordem['idtv']}}
                                     </p>
                                     
                                     <button data-clipboard-target="#idtv" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
-
+                                    @endif
+                                
                                 </div>
                                 <div class="col-6">
                                     <i class="fas fa-user-lock mr-1"></i>
                                     <label class="h5">Senha TeamViewer</label>
 
+                                    @if (is_null($item_ordem['senhatv']))
+                                    <p style="color: #DC3545" class="h5 mb-0 font-weight-bold">
+                                        Não informado
+                                    </p>
+                                    @else
                                     <p id="senhatv" class="h5 mb-0">
                                         {{$item_ordem['senhatv']}}
                                     </p>
 
                                     <button data-clipboard-target="#senhatv" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
+                                    @endif
+                                    
                                 </div>
                             </div>
                             <hr>
@@ -264,11 +308,19 @@
                                     <i class="fas fa-tools mr-1"></i>
                                     <label class="h5">Serviço executado</label>
 
+                                    @if (is_null($item_ordem['solucao']))
+                                    <p style="color: #DC3545" class="h5 mb-0 font-weight-bold">
+                                        Não informado
+                                    </p>
+                                    <small style="color: #DC3545">Preenchimento obrigatório para fechar Ordem de Serviço.</small>
+                                    @else
                                     <p id="solucao" class="h5 mb-0">
                                         {{$item_ordem['solucao']}}
                                     </p>
 
                                     <button data-clipboard-target="#solucao" class="copia btn btn-sm btn-outline-primary mt-2">Copiar</button>
+                                    @endif
+                                    
                                 </div>
                             </div>
 

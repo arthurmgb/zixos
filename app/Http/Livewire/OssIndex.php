@@ -77,6 +77,9 @@ class OssIndex extends Component
         if(is_null($os->saida)){
             $this->dispatchBrowserEvent('cancel-toggle', ['message' => 'Não é possível fechar uma O.S. sem marcar a saída.']);
         }
+        elseif(is_null($os->solucao)){
+            $this->dispatchBrowserEvent('cancel-toggle', ['message' => 'O cadastro de serviço executado é obrigatório.']);
+        }
         else{
 
             $this->ordem = $os->id;

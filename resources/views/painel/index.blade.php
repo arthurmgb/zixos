@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/painel/painel_custom.css">
     <link rel="shortcut icon" type="image/x-icon" href="/storage/painel/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <link rel="stylesheet" href="{{asset('css/painel/tooltip.css')}}">
     <style>
         .font-grow{
             font-size: 18px;

@@ -38,26 +38,47 @@ class OssRelatorios extends Component
                 
                 $situacao = $this->search['situacao']; 
 
-                //ENCONTRADAS POR PÁGINA
-                $oss = Ordem::where('user_id', auth()->user()->id)
-                ->where('fechada', $situacao)
-                ->whereBetween('created_at', [$inicial, $final])
-                ->latest('id')
-                ->paginate(7); 
-                $qtd_os = count($oss);
+                if($situacao == 2){
+                    //ENCONTRADAS POR PÁGINA
+                    $oss = Ordem::where('user_id', auth()->user()->id)
+                    ->whereBetween('created_at', [$inicial, $final])
+                    ->latest('id')
+                    ->paginate(7); 
+                    $qtd_os = count($oss);
 
-                //TOTAL ENCONTRADAS
-                $resultado = Ordem::where('user_id', auth()->user()->id)
-                ->where('fechada', $situacao)
-                ->whereBetween('created_at', [$inicial, $final])
-                ->get();
-                $os_encontradas = count($resultado);
+                    //TOTAL ENCONTRADAS
+                    $resultado = Ordem::where('user_id', auth()->user()->id)
+                    ->whereBetween('created_at', [$inicial, $final])
+                    ->get();
+                    $os_encontradas = count($resultado);
 
-                return view('livewire.oss-relatorios', compact('oss', 'qtd_os', 'os_encontradas'))
-                ->layout('painel.relatorios');
+                    return view('livewire.oss-relatorios', compact('oss', 'qtd_os', 'os_encontradas'))
+                    ->layout('painel.relatorios');
+
+                }else{
+                    //ENCONTRADAS POR PÁGINA
+                    $oss = Ordem::where('user_id', auth()->user()->id)
+                    ->where('fechada', $situacao)
+                    ->whereBetween('created_at', [$inicial, $final])
+                    ->latest('id')
+                    ->paginate(7); 
+                    $qtd_os = count($oss);
+
+                    //TOTAL ENCONTRADAS
+                    $resultado = Ordem::where('user_id', auth()->user()->id)
+                    ->where('fechada', $situacao)
+                    ->whereBetween('created_at', [$inicial, $final])
+                    ->get();
+                    $os_encontradas = count($resultado);
+
+                    return view('livewire.oss-relatorios', compact('oss', 'qtd_os', 'os_encontradas'))
+                    ->layout('painel.relatorios');
+                }
+
+            }
+     
+            else{
                 
-            }else{
-
                 $this->search['situacao'] = '1';
 
                 if(isset($this->search['final'])){
@@ -92,7 +113,8 @@ class OssRelatorios extends Component
                 
             }
             
-        }else{
+        }
+        else{
             
             return view('livewire.oss-relatorios')
                     ->layout('painel.relatorios');
@@ -130,6 +152,9 @@ class OssRelatorios extends Component
         
         if(is_null($os->saida)){
             $this->dispatchBrowserEvent('cancel-toggle', ['message' => 'Não é possível fechar uma O.S. sem marcar a saída.']);
+        }
+        elseif(is_null($os->solucao)){
+            $this->dispatchBrowserEvent('cancel-toggle', ['message' => 'O cadastro de serviço executado é obrigatório.']);
         }
         else{
 

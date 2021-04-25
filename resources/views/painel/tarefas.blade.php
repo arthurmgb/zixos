@@ -108,6 +108,10 @@
         margin-top: 4px;
         margin-left: 6px;
         }
+        .focused{
+            color: rgb(20, 20, 230);
+            font-weight: 700;
+        }
 
     </style>
 @stop
