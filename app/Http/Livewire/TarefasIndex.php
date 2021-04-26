@@ -100,6 +100,8 @@ class TarefasIndex extends Component
             'tarefa',
         ]);
 
+        $this->resetPage();
+
         $this->dispatchBrowserEvent('tarefa-criada', ['message' => 'Tarefa criada com sucesso!']);
 
     }
