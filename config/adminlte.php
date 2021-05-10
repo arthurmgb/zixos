@@ -256,7 +256,7 @@ return [
         ],
         ['header' => 'FERRAMENTAS'],
         [
-            'text' => 'Tarefas',
+            'text' => 'Minhas tarefas',
             'route'  => 'tarefas',
             'icon' => 'fas fa-fw fa-tasks',
 
@@ -286,6 +286,12 @@ return [
         ],
         ['header' => 'SOCIAL'],
         [
+            'text' => 'MantisBT',
+            'url'  => 'http://192.168.254.91/mantis/my_view_page.php',
+            'icon' => 'fas fa-fw fa-bug',
+            'target' => '_blank',
+        ],
+        [
             'text' => 'Skype',
             'url'  => 'https://go.skype.com/sfw',
             'icon' => 'fab fa-fw fa-skype',
@@ -313,13 +319,6 @@ return [
             'text' => 'Google Drive',
             'url'  => 'https://drive.google.com',
             'icon' => 'fab fa-fw fa-google-drive',
-            'target' => '_blank',
-        ],
-        
-        [
-            'text' => 'MantisBT',
-            'url'  => 'http://192.168.254.91/mantis/my_view_page.php',
-            'icon' => 'fas fa-fw fa-bug',
             'target' => '_blank',
         ],
         [

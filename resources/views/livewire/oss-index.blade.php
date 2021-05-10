@@ -1,7 +1,9 @@
 <div>
     <div class="card">
         <div class="card-header">
-
+            <a class="btn-link float-left" href="{{route('tarefas')}}">
+                <i class="fas fa-tasks mr-2"></i>Minhas tarefas ({{$qtd_tarefas_total}})
+            </a>
             <a accesskey="s" data-tooltip="Alt + S" data-flow="top" class="btn btn-success btn-lg float-right mb-2" href="{{route('oss.create')}}">
                 <i class="fas fa-plus-circle mr-2"></i>Incluir O.S.
             </a>

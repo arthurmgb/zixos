@@ -43,7 +43,7 @@ class OssRelatorios extends Component
                     $oss = Ordem::where('user_id', auth()->user()->id)
                     ->whereBetween('created_at', [$inicial, $final])
                     ->latest('id')
-                    ->paginate(7); 
+                    ->paginate(10); 
                     $qtd_os = count($oss);
 
                     //TOTAL ENCONTRADAS
@@ -61,7 +61,7 @@ class OssRelatorios extends Component
                     ->where('fechada', $situacao)
                     ->whereBetween('created_at', [$inicial, $final])
                     ->latest('id')
-                    ->paginate(7); 
+                    ->paginate(10); 
                     $qtd_os = count($oss);
 
                     //TOTAL ENCONTRADAS
@@ -98,7 +98,7 @@ class OssRelatorios extends Component
                 ->where('fechada', $situacao)
                 ->whereBetween('created_at', [$inicial, $final])
                 ->latest('id')
-                ->paginate(7); 
+                ->paginate(10); 
                 $qtd_os = count($oss);
 
                 //TOTAL ENCONTRADAS

@@ -31,7 +31,7 @@ class OssAll extends Component
         $oss = Ordem::where('user_id', auth()->user()->id)
         ->where('empresa', 'LIKE', '%' . $this->search .'%')
         ->latest('id')
-        ->paginate(7);
+        ->paginate(10);
 
         //ABERTAS
         $oss_abertas = Ordem::where('user_id', auth()->user()->id)

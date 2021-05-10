@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ordem;
+use App\Models\Tarefa;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -33,7 +34,7 @@ class OssIndex extends Component
         ->where('empresa', 'LIKE', '%' . $this->search .'%')
         ->whereDate('created_at', Carbon::today()->locale('pt_BR'))
         ->latest('id')
-        ->paginate(7);
+        ->paginate(10);
 
         $oss_abertas = Ordem::where('user_id', auth()->user()->id)
         ->where('fechada', 0)
@@ -41,7 +42,10 @@ class OssIndex extends Component
 
         $qtd_abertas = count($oss_abertas);
 
-        return view('livewire.oss-index', compact('oss', 'qtd_abertas'))
+        $tarefas_total = Tarefa::all();
+        $qtd_tarefas_total = count($tarefas_total);
+
+        return view('livewire.oss-index', compact('oss', 'qtd_abertas', 'qtd_tarefas_total'))
                                 ->layout('painel.index');
         
     }
