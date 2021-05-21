@@ -46,16 +46,16 @@
                 </a>
             </div>
 
-                <table class="table table-striped table-responsive-sm text-center border-top">
+                <table class="table table-sm table-striped table-responsive-sm text-center border-top">
                     <thead>
                         <tr>
-                            <th>Inclusão</th>
-                            <th>Entrada</th>
-                            <th>Empresa</th>
-                            <th>Solicitante</th>
-                            <th>Solicitação</th>
-                            <th>Saída</th>
-                            <th style="user-select: none;">Ações</th>
+                            <th width="85px" style="user-select: none;">Inclusão</th>
+                            <th width="85px" style="user-select: none;">Entrada</th>
+                            <th width="150px" style="user-select: none;">Empresa</th>
+                            <th width="90px" style="user-select: none;">Solicitante</th>
+                            <th width="250px" style="user-select: none;">Solicitação</th>
+                            <th width="85px" style="user-select: none;">Saída</th>
+                            <th width="600px" style="user-select: none;">Ações</th>
                         </tr>
                     </thead>
                     <tbody>

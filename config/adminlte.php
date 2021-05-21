@@ -262,6 +262,13 @@ return [
 
         ],
         [
+            'text' => 'TeamViewer Conexões',
+            'url'  => 'http://192.168.254.91/tv',
+            'icon' => 'fab fa-fw fa-teamspeak',
+            'target' => '_blank',
+
+        ],
+        [
             'text' => 'Portal da NF-e',
             'url'  => 'https://www.nfe.fazenda.gov.br/portal/principal.aspx',
             'icon' => 'fas fa-fw fa-file-invoice-dollar',
